@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Single-shot volumetric fluorescence imaging with neural fields">
+  <meta name="keywords" content="fluorescence, single-shot, neural fields, volumetric imaging, SVF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FPM-INR</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="./static/css/style.css"> -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/microscope-solid.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FPM-INR: Fourier ptychographic microscopy image stack reconstruction using implicit neural representations</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://biophot.caltech.edu/People">Oumeng Zhang</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://hwzhou2020.github.io/">Haowen Zhou</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://brandonyfeng.github.io">Brandon Y. Feng</a><sup>2,*</sup>,</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://dknweb.caltech.edu/lab-members"> Elin M. Larsson</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://dknweb.caltech.edu/lab-members">Reinaldo E. Alcalde</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://biophot.caltech.edu/People">Siyuan Yin</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://biophot.caltech.edu/People">Catherine Deng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://biophot.caltech.edu/">Changhuei Yang</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>California Institute of Technology,</span>
+            <span class="author-block"><sup>2</sup>Massachusetts Institute of Technology,</span>
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">arXiv, 2024</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://opg.optica.org/optica/fulltext.cfm?uri=optica-10-12-1679&id=544513"                           
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solid fa-circle-notch fa-rotate-270"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2405.10463"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Presentation</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hwzhou2020/SVF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://doi.org/10.22002/7aer7-qhf77"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Single-shot volumetric fluorescence (SVF) imaging offers a significant advantage over traditional imaging methods that require scanning across multiple axial planes as it can capture biological processes with high temporal resolution across a large field of view. 
+            Existing SVF imaging methods often require large, complex point spread functions (PSFs) to meet the multiplexing requirements of compressed sensing, which limits the signal-to-noise ratio, resolution and/or field of view. In this paper, we introduce the QuadraPol PSF combined with neural fields, a novel approach for SVF imaging. 
+            This method utilizes a compact custom polarizer at the back focal plane and a polarization camera to detect fluorescence, effectively encoding the 3D scene within a compact PSF without depth ambiguity. 
+            Additionally, we propose a reconstruction algorithm based on the neural fields technique that addresses the inaccuracies of phase retrieval methods used to correct imaging system aberrations. 
+            This algorithm combines the accuracy of experimental PSFs with the long depth of field of computationally generated retrieved PSFs. 
+            QuadraPol PSF, combined with neural fields, significantly reduces the acquisition time of a conventional fluorescence microscope by approximately 20 times and captures a 100 mm<sup>3</sup> cubic volume in one shot. 
+            We validate the effectiveness of both our hardware and algorithm through all-in-focus imaging of bacterial colonies on sand surfaces and visualization of plant root morphology. 
+            Our approach offers a powerful tool for advancing biological research and ecological studies.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Figrue 1. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-wodth">
+            <h2 class="title is-3">Framework Workflow</h2>
+    
+              <div class="column is-centered has-text-centered">
+                <img src="./static/images/Figure 1 long.jpg" alt="FPM-INR" class="publication-image">
+              </div>
+    
+          </div>
+        </div>
+        <!-- Figrue 1. -->
+      </div>
+    </section>
+    
+
+   <!-- Video. -->
+   <div class="columns is-centered has-text-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Image stack reconstructions</h2>
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Tilted Human Blood Smear Stack</h3>
+          <div class="publication-video">
+            <iframe width="560" height="315" src="./static/videos/BloodSmearTilt.mp4"
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cwfU89jiut0?si=Lvs1XeIgc9Ez8-vy" 
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     
+            </div> -->
+      </div>
+    </div>
+      <!--/ Paper video. -->
+
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Thyroid Gland Lesion Stack</h3>
+          <div class="publication-video">
+            <iframe width="560" height="315" src="./static/videos/Thyroid.mp4"
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/gjO9ClbiTIA?si=ziyxeguPVrdXJkx4" 
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>        </div> -->
+        </div>
+      </div>
+      <!--/ Paper video. -->
+
+    </div>
+  </div>
+  <!--/ Video. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">2D slice reconstruction</h2>
+    </div>
+
+    <!-- Siemens Star -->
+    <h3 class="title is-4">Siemens Star</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also reconstruct 2D slices us FPM-INR method.
+            In this demonstration, a Siemens Star resolution target with synthetic NA of 0.75 using 10X/0.25NA objective is presented.
+            Use the image slide and click to drag to see the comparsion among the brightfield microscope, FPM, and FPM-INR. 
+            Our method shows equivalent performance as the FPM and superior resolution enhancement to brightfield image. 
+          </p>
+        </div>
+        <p>
+          <br>
+        </p>
+      <div class="columns is-vcentered interpolation-panel">
+        <div class="columns is-2 has-text-centered">
+          <div class="wrapper first-slider"> 
+            <div class="label-left">FPM-INR</div>
+            <div class="label-right">Brightfield</div>       
+            <div class="images">
+              <div class="img-0"></div>
+              <div class="img-2"></div>
+            </div>
+            <div class="slider">
+              <div class="drag-line">
+                <span></span>
+              </div>
+              <input type="range" min="0" max="100" value="50">
+            </div>
+          </div>
+        
+          <script>
+            const wrapper1 = document.querySelector(".first-slider");
+            const slider1 = wrapper1.querySelector(".slider input");
+            const img1 = wrapper1.querySelector(".images .img-2");
+            const dragLine1 = wrapper1.querySelector(".slider .drag-line");
+            slider1.oninput = ()=>{
+              let sliderVal = slider1.value;
+              dragLine1.style.left = sliderVal + "%";
+              img1.style.width = sliderVal + "%";
+            }
+          </script>
+
+          <div class="wrapper second-slider">  
+            <div class="label-left">FPM-INR</div>
+              <div class="label-right">FPM</div>       
+            <div class="images">
+              <div class="img-1"></div>
+              <div class="img-2"></div>
+            </div>
+            <div class="slider">
+              <div class="drag-line">
+                <span></span>
+              </div>
+              <input type="range" min="0" max="100" value="50">
+            </div>
+          </div>
+          
+        
+          <script>
+            const wrapper2 = document.querySelector(".second-slider");
+            const slider2 = wrapper2.querySelector(".slider input");
+            const img2 = wrapper2.querySelector(".images .img-2");
+            const dragLine2 = wrapper2.querySelector(".slider .drag-line");
+            slider2.oninput = ()=>{
+              let sliderVal = slider2.value;
+              dragLine2.style.left = sliderVal + "%";
+              img2.style.width = sliderVal + "%";
+            }
+          </script>
+        </div>
+      </div>
+      <!-- Siemens Star -->
+      
+    <p>
+      <br>
+      <br>
+    </p>
+
+    <!-- Sheepblood -->
+    <h3 class="title is-4">Sheep Blood Smear</h3>
+    <div class="content has-text-justified">
+      <p>
+        Here we demonstrate an comple-field reconstruction using FPM and FPM-INR.
+        The left image slider shows the amplitude comparison and the right shows the phase comparison.
+        Use the image slide and click to drag to see the comparsion between FPM and FPM-INR.  
+      </p>
+    </div>
+    <p>
+      <br>
+    </p>
+
+    <div class="columns is-2 has-text-centered">
+      <div class="wrapper third-slider"> 
+        <div class="label-left">FPM-INR</div>
+        <div class="label-right">FPM</div>       
+        <div class="images">
+          <div class="img-3"></div>
+          <div class="img-4"></div>
+        </div>
+        <div class="slider">
+          <div class="drag-line">
+            <span></span>
+          </div>
+          <input type="range" min="0" max="100" value="50">
+        </div>
+      </div>
+    
+      <script>
+        const wrapper3 = document.querySelector(".third-slider");
+        const slider3 = wrapper3.querySelector(".slider input");
+        const img3 = wrapper3.querySelector(".images .img-4"); // Change this to the image you want to show 
+        const dragLine3 = wrapper3.querySelector(".slider .drag-line");
+        slider3.oninput = ()=>{
+          let sliderVal = slider3.value;
+          dragLine3.style.left = sliderVal + "%";
+          img3.style.width = sliderVal + "%";
+        }
+      </script>
+
+      <div class="wrapper fourth-slider">  
+        <div class="label-left">FPM-INR</div>
+          <div class="label-right">FPM</div>       
+        <div class="images">
+          <div class="img-5"></div>
+          <div class="img-6"></div>
+        </div>
+        <div class="slider">
+          <div class="drag-line">
+            <span></span>
+          </div>
+          <input type="range" min="0" max="100" value="50">
+        </div>
+      </div>
+    
+      <script>
+        const wrapper4 = document.querySelector(".fourth-slider");
+        const slider4 = wrapper4.querySelector(".slider input");
+        const img4 = wrapper4.querySelector(".images .img-6"); // Change this to the image you want to show 
+        const dragLine4 = wrapper4.querySelector(".slider .drag-line");
+        slider4.oninput = ()=>{
+          let sliderVal = slider4.value;
+          dragLine4.style.left = sliderVal + "%";
+          img4.style.width = sliderVal + "%";
+        }
+      </script> 
+    </div>
+
+  <!-- Sheepblood -->
+      
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h3 class="title">BibTeX</h3>
+    <pre><code>@misc{zhang2024singleshot,
+      title={Single-shot volumetric fluorescence imaging with neural fields},
+      author={Oumeng Zhang and Haowen Zhou and Brandon Y. Feng and Elin M. Larsson and Reinaldo E. Alcalde and Siyuan Yin and Catherine Deng and Changhuei Yang},
+      year={2024},
+      eprint={2405.10463},
+      archivePrefix={arXiv},
+      primaryClass={physics.optics}
+  }</code></pre>
+  </div>
+  <!-- <div class="container is-max-desktop content">
+    <h3 class="title">Dataset DOI</h3>
+    <pre><code>CaltechDATA
+DOI: <a href="https://doi.org/10.22002/7aer7-qhf77">https://doi.org/10.22002/7aer7-qhf77</a></code></pre>
+  </div> -->
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://opg.optica.org/optica/fulltext.cfm?uri=optica-10-12-1679&id=544513">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/hwzhou2020" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered" style="font-size: 10px;">
+          <p>
+            Page template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
