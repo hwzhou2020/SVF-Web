@@ -188,7 +188,7 @@
         <div class="column is-full-width">
           <h3 class="title is-4">All-in-focus image</h3>
             <div class="column is-centered has-text-centered">
-              <img src="./static/images/Figure 1 long.jpg" alt="FPM-INR" class="publication-image">
+              <img src="./static/images/sand_all_in_focus.png" alt="FPM-INR" class="publication-image">
             </div>
         </div>
       </div>
@@ -198,7 +198,7 @@
         <div class="column is-full-width">
           <h3 class="title is-4">Focal stack</h3>
           <div class="publication-video">
-            <iframe width="560" height="315" src="./static/videos/Thyroid.mp4"
+            <iframe width="1000" height="1000" src="./static/images/sand_stack.gif"
               title="Sand colony" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
@@ -223,7 +223,7 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-wodth">
             <div class="column is-centered has-text-centered">
-              <img src="./static/images/Figure 1.jpg" alt="fig_root" class="publication-image">
+              <img src="./static/images/root_full_reconstruction.png" alt="fig_root" class="publication-image">
             </div>
       </div>
     </div>
@@ -248,7 +248,7 @@
             <div class="label-right">Deconvolution</div>       
             <div class="images">
               <div class="img-0"></div>
-              <div class="img-2"></div>
+              <div class="img-1"></div>
             </div>
             <div class="slider">
               <div class="drag-line">
@@ -261,7 +261,7 @@
           <script>
             const wrapper1 = document.querySelector(".first-slider");
             const slider1 = wrapper1.querySelector(".slider input");
-            const img1 = wrapper1.querySelector(".images .img-2");
+            const img1 = wrapper1.querySelector(".images .img-1");
             const dragLine1 = wrapper1.querySelector(".slider .drag-line");
             slider1.oninput = ()=>{
               let sliderVal = slider1.value;
@@ -274,8 +274,8 @@
             <div class="label-left">Neural fields</div>
               <div class="label-right">Deconvolution</div>       
             <div class="images">
-              <div class="img-1"></div>
               <div class="img-2"></div>
+              <div class="img-3"></div>
             </div>
             <div class="slider">
               <div class="drag-line">
@@ -289,7 +289,7 @@
           <script>
             const wrapper2 = document.querySelector(".second-slider");
             const slider2 = wrapper2.querySelector(".slider input");
-            const img2 = wrapper2.querySelector(".images .img-2");
+            const img2 = wrapper2.querySelector(".images .img-3");
             const dragLine2 = wrapper2.querySelector(".slider .drag-line");
             slider2.oninput = ()=>{
               let sliderVal = slider2.value;
@@ -314,7 +314,7 @@
           </div>
           <input class="slider is-fullwidth is-large is-info"
                 id="interpolation-slider"
-                step="1" min="0" max="100" value="0" type="range">
+                step="1" min="1" max="100" value="0" type="range">
         </div>
       </div>
       
