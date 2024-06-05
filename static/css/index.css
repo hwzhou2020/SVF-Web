@@ -217,46 +217,30 @@ body {
   background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
   z-index: 10; /* Ensures it's above the image */
 }
-
-.wrapper .images {
-  position: absolute; 
-  width: 100%; /* Full width of the parent container */
-  padding-top: 100%; /* Aspect ratio: height is 100% of the width */
-}
-
-.wrapper .images .img-0 {
-  position: absolute; /* Positioned absolutely within the relative container */
-  top: 0;
-  left: 0;
+.wrapper .images{
   height: 100%;
   width: 100%;
-  background: url("../images/root_128_inr.png") no-repeat center center;
-  background-size: contain; /* Ensure the entire image is visible */
+  display: flex;
 }
-.wrapper .images .img-1{
+.img-0 {
+  height: 100%;
+  width: 100%;
+  background: url("../images/root_128_inr.png") no-repeat;
+}
+.img-1{
   height: 100%;
   width: 100%;
   background: url("../images/root_128_deconv.png") no-repeat;
-  background-size: cover; 
-  background-position: center; 
 }
-.wrapper .images .img-2 {
-  position: absolute; 
-  top: 0;
-  left: 0;
+.img-2 {
   height: 100%;
   width: 100%;
-  background: url("../images/root_189_inr.png") no-repeat center center;
-  background-size: contain;
+  background: url("../images/root_189_inr.png") no-repeat;
 }
-.wrapper .images .img-3 {
-  position: absolute; 
-  top: 0;
-  left: 0;
+.img-3 {
   height: 100%;
   width: 100%;
-  background: url("../images/root_189_deconv.png") no-repeat center center;
-  background-size: contain;
+  background: url("../images/root_189_deconv.png") no-repeat;
 }
 
 .wrapper .slider{
